@@ -4,7 +4,7 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "producto",
+    "displayName": "productos",
     "description": ""
   },
   "options": {
@@ -34,6 +34,9 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "products"
+    },
+    "packing": {
+      "type": "string"
     }
   }
 }
