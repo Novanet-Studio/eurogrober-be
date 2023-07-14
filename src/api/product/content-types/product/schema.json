@@ -15,9 +15,6 @@
     "name": {
       "type": "string"
     },
-    "description": {
-      "type": "string"
-    },
     "images": {
       "type": "media",
       "multiple": true,
@@ -35,8 +32,8 @@
       "target": "api::category.category",
       "inversedBy": "products"
     },
-    "packing": {
-      "type": "string"
+    "description": {
+      "type": "richtext"
     }
   }
 }
