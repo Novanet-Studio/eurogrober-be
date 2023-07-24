@@ -1,42 +1,32 @@
-# 🚀 Getting started with Strapi
+# 🚀 Eurogrober
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+Strapi backend implementation for Eurogrober
 
-### `develop`
+> This app uses `docker` to pull up the PostgreSQL database, you first need to have it installed [docker](https://docs.docker.com/engine/install/).
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
+> In addition, it is necessary to have installed [docker compose](https://docs.docker.com/compose/install/)
 
-```
-npm run develop
-# or
-yarn develop
-```
+> After installing Docker and docker-compose, you need to make sure you have the necessaries env keys in your `.env` file.
 
-### `start`
+### Getting started
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
+Clone the repository:
 
-```
-npm run start
-# or
-yarn start
+```bash
+git clone https://github.com/Novanet-Studio/eurogrober-be.git
 ```
 
-### `build`
+Install dependencies
 
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
-
-```
-npm run build
-# or
-yarn build
+```bash
+yarn install
 ```
 
-This app uses `docker` to pull up the PostgreSQL database, you first need to have it installed [docker](https://docs.docker.com/engine/install/).
+Create `.env`
 
-In addition, it is necessary to have installed [docker compose](https://docs.docker.com/compose/install/)
-
-After installing Docker and docker-compose, you need to make sure you have the necessary env keys in your `.env` file.
+```bash
+cp .env.example .env
+```
 
 Finally, you can run the following command to bring up the database:
 
@@ -44,26 +34,23 @@ Finally, you can run the following command to bring up the database:
 docker compose up
 ```
 
-## ⚙️ Deployment
+### Database
 
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+We use docker to handle the database connection, to have it sincronized and avoid problems with the implementation.
 
-## 📚 Learn more
+#### Create backup
+The command to create a backup:
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+```bash
+docker exec -t your-db-container pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
+```
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+> To found the container id/name, just run `docker ps`
 
-## ✨ Community
+Command to restore the database from backup:
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+```bash
+cat your_dumped.sql | docker exec -i your-db-container psql -U postgres
+```
 
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+After create the backup, we export `.json` backup from Strapi itself, just go to the part when changes are made, click on the `export` button and save the file.
