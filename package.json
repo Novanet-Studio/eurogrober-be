@@ -28,7 +28,7 @@
   },
   "engines": {
     "node": ">=14.x.x <=18.x.x",
-    "npm": ">=6.0.0"
+    "npm": "8.11.0"
   },
   "license": "MIT"
 }
