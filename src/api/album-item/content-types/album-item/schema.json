@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "album_items",
+  "info": {
+    "singularName": "album-item",
+    "pluralName": "album-items",
+    "displayName": "album-item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 50,
+      "required": false,
+      "unique": true
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 255
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "album": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::album.album",
+      "inversedBy": "album_items"
+    }
+  }
+}

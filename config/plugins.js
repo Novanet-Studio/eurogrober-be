@@ -14,8 +14,8 @@ module.exports = ({ env }) => ({
         delete: {},
       },
     },
-  },  
-  /* graphql: {
+  },
+  graphql: {
     enabled: true,
     config: {
       playgroundAlways: true,
@@ -24,6 +24,6 @@ module.exports = ({ env }) => ({
       apolloServer: {
         tracing: true,
       },
-    }
-  } */
+    },
+  },
 });
