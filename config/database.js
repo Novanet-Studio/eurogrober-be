@@ -1,30 +1,24 @@
-/**
- * Function that returns the necessary ssl configuration depending on the environment
- * @param {*} env
- * @returns {object}
- */
-const ssl = (env) => {
-  if (process.env.NODE_ENV === 'production') {
-    return {
-      ssl: {
-        rejectUnauthorized: env.bool('POSTGRES_SSL_SELF', false),
+export default ({ env }) => {
+  const client = env('DATABASE_CLIENT', 'postgres');
+
+  const connections = {
+    postgres: {
+      connection: {
+        connectionString: env('DATABASE_URL'),
+        ssl: env.bool('DATABASE_SSL', false) ? { rejectUnauthorized: false } : false,
       },
-    };
-  }
-
-  return { ssl: false };
-};
-
-module.exports = ({ env }) => ({
-  connection: {
-    client: 'postgres',
-    connection: {
-      host: env('PGHOST'),
-      port: env.int('PGPORT'),
-      database: env('POSTGRES_DB'),
-      user: env('POSTGRES_USER'),
-      password: env('POSTGRES_PASSWORD'),
-      ...ssl(env),
+      pool: {
+        min: env.int('DATABASE_POOL_MIN', 2),
+        max: env.int('DATABASE_POOL_MAX', 10),
+      },
     },
-  },
-});
+  };
+
+  return {
+    connection: {
+      client,
+      ...connections[client],
+      acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
+    },
+  };
+};
