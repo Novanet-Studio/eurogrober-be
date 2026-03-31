@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "private": true,
-  "version": "0.2.0",
+  "version": "2.2.0",
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
@@ -11,19 +11,15 @@
     "up": "bash ./scripts/up.sh"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^5.5.0",
-    "@strapi/plugin-users-permissions": "^5.5.0",
-    "@strapi/provider-upload-cloudinary": "^5.5.0",
-    "@strapi/strapi": "^5.5.0",
-    "pg": "^8.13.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.0",
-    "styled-components": "^6.1.13"
-  },
-  "engines": {
-    "node": "20.x",
-    "npm": ">=10.0.0"
+    "@strapi/plugin-graphql": "^5.40.0",
+    "@strapi/plugin-users-permissions": "^5.40.0",
+    "@strapi/provider-upload-cloudinary": "^5.40.0",
+    "@strapi/strapi": "^5.40.0",
+    "pg": "^8.20.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
   },
   "author": {
     "name": "A Strapi developer"
