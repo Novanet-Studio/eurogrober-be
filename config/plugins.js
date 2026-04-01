@@ -15,10 +15,7 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  "import-export-entries": {
-    enabled: true,
-  },
-  /* graphql: {
+  graphql: {
     enabled: true,
     config: {
       playgroundAlways: true,
@@ -27,6 +24,6 @@ module.exports = ({ env }) => ({
       apolloServer: {
         tracing: true,
       },
-    }
-  } */
+    },
+  },
 });

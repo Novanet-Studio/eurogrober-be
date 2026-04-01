@@ -8,6 +8,7 @@ module.exports = {
    * This gives you an opportunity to extend code.
    */
   register({ strapi }) {
+    /*
     const extensionService = strapi.plugin('graphql').service('extension');
 
     const extension = () => ({
@@ -23,6 +24,7 @@ module.exports = {
     });
 
     extensionService.use(extension);
+    */
   },
 
   /**
